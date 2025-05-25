@@ -8,8 +8,9 @@ export interface MenuItem {
 	parentId: number //父菜单id
 	name: string //英文名字
 	path: string //路由路径
-	route: string //组件引入路径
+	route?: string //组件引入路径
 	role: Role[] //角色
+	layout?: string //布局组件
 	icon?: ReactNode //图标
 	activeIcon?: ReactNode //激活图标
 	children?: (MenuItem | null)[] //子菜单
