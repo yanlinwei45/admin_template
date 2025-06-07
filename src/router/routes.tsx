@@ -6,7 +6,8 @@ import { defaultMenuList } from "./menu";
 const modules = import.meta.glob('/src/views/**/*.tsx');
 
 // 转换菜单为 RouteObject[]
-const getMenuList = (menuList: (MenuItem | null)[]): RouteObject[] => {
+const getMenuList = (menuList: (MenuItem | null)[]): RouteObject[] => { 
+
   const routes: RouteObject[] = menuList.filter(menu => menu !== null).map(menu => {
     const route: RouteObject = {
       path: menu.path,
@@ -46,13 +47,14 @@ const getMenuList = (menuList: (MenuItem | null)[]): RouteObject[] => {
     
     return route;
   });
+  
   return routes;
 };
 
 // 生成所有路由
 const routes: RouteObject[] = [
-  ...getMenuList(useMenuStore.getState().menuList),
 	...getMenuList(defaultMenuList),
+  ...getMenuList(useMenuStore.getState().menuList),
 ];
 
 export default routes;
